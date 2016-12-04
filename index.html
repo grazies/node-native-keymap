@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Node-native-keymap by grazies</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Node-native-keymap</h1>
+      <h2 class="project-tagline">Provide OS keyboard layout functionality as a nodejs module</h2>
+      <a href="https://github.com/grazies/node-native-keymap" class="btn">View on GitHub</a>
+      <a href="https://github.com/grazies/node-native-keymap/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/grazies/node-native-keymap/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="os-key-mapping-node-module-" class="anchor" href="#os-key-mapping-node-module-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OS key mapping node module <a href="https://travis-ci.org/Microsoft/node-native-keymap"><img src="https://travis-ci.org/Microsoft/node-native-keymap.svg?branch=master" alt="Build Status"></a>
+</h1>
+
+<p>Returns what characters are produced by pressing keys with different modifiers on the current system keyboard layout.</p>
+
+<h2>
+<a id="installing" class="anchor" href="#installing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing</h2>
+
+<ul>
+<li>On Debian-based Linux: <code>sudo apt-get install libx11-dev</code>
+</li>
+<li>On Red Hat-based Linux: <code>sudo yum install libx11-devel.x86_64 # or .i686</code>
+</li>
+<li>On FreeBSD: <code>sudo pkg install libX11</code>
+</li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre>npm install native-keymap</pre></div>
+
+<h2>
+<a id="using" class="anchor" href="#using" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> keymap <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>native-keymap<span class="pl-pds">'</span></span>);
+<span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-smi">keymap</span>.<span class="pl-en">getKeyMap</span>());</pre></div>
+
+<p>Example output when using standard US keyboard layout:</p>
+
+<pre><code>[
+  ...
+  { key_code: 'VKEY_OEM_2',
+    value: '/',
+    withShift: '?',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_3',
+    value: '`',
+    withShift: '~',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_4',
+    value: '[',
+    withShift: '{',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_5',
+    value: '\\',
+    withShift: '|',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_6',
+    value: ']',
+    withShift: '}',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_7',
+    value: '\'',
+    withShift: '"',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_102',
+    value: '\\',
+    withShift: '|',
+    withAltGr: '',
+    withShiftAltGr: '' } ]
+</code></pre>
+
+<p>Example output when using German (Swiss) keyboard layout:</p>
+
+<pre><code>[
+  ...
+  { key_code: 'VKEY_OEM_2',
+    value: '§',
+    withShift: '°',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_3',
+    value: '',
+    withShift: '¨!',
+    withAltGr: ']',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_4',
+    value: '\'',
+    withShift: '?',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_5',
+    value: '´ä',
+    withShift: 'à',
+    withAltGr: '{',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_6',
+    value: '',
+    withShift: '^`',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_7',
+    value: '~ö',
+    withShift: 'é',
+    withAltGr: '',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_8',
+    value: '$',
+    withShift: '£',
+    withAltGr: '}',
+    withShiftAltGr: '' },
+  { key_code: 'VKEY_OEM_102',
+    value: '&lt;',
+    withShift: '&gt;',
+    withAltGr: '\\',
+    withShiftAltGr: '' } ]
+</code></pre>
+
+<h2>
+<a id="supported-oses" class="anchor" href="#supported-oses" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Supported OSes</h2>
+
+<ul>
+<li>linux (X11)</li>
+<li>windows</li>
+<li>mac</li>
+<li>freebsd</li>
+</ul>
+
+<h2>
+<a id="developing" class="anchor" href="#developing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developing</h2>
+
+<ul>
+<li>only tested on <code>node v4.1.1</code>
+</li>
+<li><code>npm install -g node-gyp</code></li>
+<li><code>node-gyp configure</code></li>
+<li><code>node-gyp build</code></li>
+<li><code>npm test</code></li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="https://github.com/Microsoft/node-native-keymap/blob/master/License.txt">MIT</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/grazies/node-native-keymap">Node-native-keymap</a> is maintained by <a href="https://github.com/grazies">grazies</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
